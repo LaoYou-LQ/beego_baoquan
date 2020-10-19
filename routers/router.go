@@ -18,4 +18,6 @@ func init() {
     beego.Router("/renzheng",&controllers.RenZhengControllers{})
 
     beego.Router("/upload_file.html",&controllers.RenZhengControllers{})
+
+   // beego.Router("/cert_detail.html",&controllers.)
 }

@@ -27,7 +27,7 @@ func (z *RenZhengControllers) Post() {
 	//标题21
 
 	fileTitle := z.Ctx.Request.PostFormValue("upload_title")
-	phone :=z.Ctx.Request.PostFormValue("Phone")
+	phone :=z.Ctx.Request.PostFormValue("phone")
 	//文件
 	f, h, err := z.GetFile("renzhen_file")
 	if err !=nil {
@@ -50,7 +50,7 @@ func (z *RenZhengControllers) Post() {
 	fmt.Println("文件标题是",fileTitle)
 	hashfile,err:=os.Open(uploadDir)
 	defer hashfile.Close()
-	hash, err := util.Md5HashReader(hashfile)
+	hash, err := util.Md5HashReader(hashfile)//保全号加密：10.16上午
 	//将上传的记录保存到数据库中
 	record := models.UploadRecord{}
 	record.FileName = h.Filename
@@ -59,8 +59,8 @@ func (z *RenZhengControllers) Post() {
 	record.CertTime = time.Now().Unix()
 	record.FileCert = hash
 	record.Phone =phone
-	fmt.Println(record.FileCert)
-	fmt.Println("hash",hash)
+	//fmt.Println(record.FileCert)
+	//fmt.Println("hash",hash)
 	_, err =record.SeveRecord()
 	if err !=nil {
 		fmt.Println(err)
@@ -74,5 +74,6 @@ func (z *RenZhengControllers) Post() {
 	}
 	fmt.Println(records)
 	z.Data["Records"]=records
+	z.Data["Phone"]=phone
 	z.TplName = "list_record.html"
 }

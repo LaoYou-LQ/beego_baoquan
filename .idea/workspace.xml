@@ -2,28 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d80a162-ffd0-4072-acac-980373b52d58" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/renzhengControllers.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/uploadRecord.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/app-de629dfeac93cb9584b8.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/common-de629dfeac93cb9584b8.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/13928177_195158772185_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/8b13632762d0f703df3a8ac0279fd7392797c58f.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/beego_保全项目.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/壁纸2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/壁纸3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/hash.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/list_record.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blockchain/block.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/veer-141674568.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/convert.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/time.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/cert_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/default.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/registerControllers.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/registerControllers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/requControllers.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/requControllers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/baoquan_user.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/baoquan_user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/renzhengControllers.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/renzhengControllers.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/login2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/reg.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/reg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/hash.go" beforeDir="false" afterPath="$PROJECT_DIR$/util/hash.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/list_record.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/list_record.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +35,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Go File" />
         <option value="HTML File" />
+        <option value="Go File" />
       </list>
     </option>
   </component>
@@ -119,22 +107,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="738" y="98" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603010970329" />
-    <state width="945" height="159" key="GridCell.Tab.0.bottom" timestamp="1603033526641">
+    <state width="1027" height="106" key="GridCell.Tab.0.bottom" timestamp="1603110768735">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="945" height="159" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603033526641" />
-    <state width="945" height="159" key="GridCell.Tab.0.center" timestamp="1603033526640">
+    <state width="1027" height="106" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603110768735" />
+    <state width="1027" height="106" key="GridCell.Tab.0.center" timestamp="1603110768735">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="945" height="159" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603033526640" />
-    <state width="945" height="159" key="GridCell.Tab.0.left" timestamp="1603033526640">
+    <state width="1027" height="106" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603110768735" />
+    <state width="1027" height="106" key="GridCell.Tab.0.left" timestamp="1603110768735">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="945" height="159" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603033526640" />
-    <state width="945" height="159" key="GridCell.Tab.0.right" timestamp="1603033526640">
+    <state width="1027" height="106" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603110768735" />
+    <state width="1027" height="106" key="GridCell.Tab.0.right" timestamp="1603110768735">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="945" height="159" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603033526640" />
+    <state width="1027" height="106" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603110768735" />
     <state x="149" y="91" key="SettingsEditor" timestamp="1603012639717">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -147,9 +135,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="627" y="332" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1602987047156" />
-    <state x="248" y="125" width="672" height="678" key="search.everywhere.popup" timestamp="1602750032796">
+    <state x="248" y="125" width="672" height="678" key="search.everywhere.popup" timestamp="1603120775861">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="248" y="125" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1602750032796" />
+    <state x="248" y="125" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603120775861" />
   </component>
 </project>
