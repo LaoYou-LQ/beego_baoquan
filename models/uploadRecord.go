@@ -2,6 +2,7 @@ package models
 
 import (
 	"DataCertProject/db"
+	"DataCertProject/util"
 )
 
 /*
@@ -14,12 +15,13 @@ type UploadRecord struct {
 	FileCert  string
 	FileTitle string
 	CertTime  int64
+	FileCertTime string
 	Phone     string
 }
 
 func (u UploadRecord) SeveRecord() (int64, error) {
 	r, err := db.Db.Exec("insert into upload_record (file_name,file_size,file_cert,file_title,cert_time,phone)"+
-		"values(?,?,?,?,?,?)",
+		"value(?,?,?,?,?,?)",
 		u.FileName, u.FileSize, u.FileCert, u.FileTitle, u.CertTime, u.Phone)
 	//fmt.Println("111",err)
 	if err != nil {
@@ -47,6 +49,7 @@ func QueryRecordbyPhone(phone string) ([]UploadRecord, error) {
 		if err != nil {
 			return nil, err
 		}
+		record.FileCertTime =util.TimeFormat(record.CertTime,0,util.TIME_FORMAT_THREE)
 		records = append(records, record)
 	}
 	return records,nil

@@ -47,7 +47,7 @@ func (z *RenZhengControllers) Post() {
 		return
 	}
 	fmt.Println("拷贝的文件大小是",file_size)
-	fmt.Println("文件标题是",fileTitle)
+	//fmt.Println("文件标题是",fileTitle)
 	hashfile,err:=os.Open(uploadDir)
 	defer hashfile.Close()
 	hash, err := util.Md5HashReader(hashfile)//保全号加密：10.16上午
@@ -72,7 +72,7 @@ func (z *RenZhengControllers) Post() {
 		z.Ctx.WriteString("获取认证数据失败")
 		return
 	}
-	fmt.Println(records)
+	//fmt.Println(records)
 	z.Data["Records"]=records
 	z.Data["Phone"]=phone
 	z.TplName = "list_record.html"
