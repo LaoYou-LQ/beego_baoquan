@@ -60,8 +60,32 @@ func (bc BlockChain) QueryAllBlocks() []*Block {
 	})
 	return blocks
 }
-func (bc BlockChain) QueryBlockByHeight(height int64)  {
-
+func (bc BlockChain) QueryBlockByHeight(height int64) *Block {
+	if height<0 {
+		return nil
+	}
+	var block *Block
+	db:=bc.BlotDb
+	db.View(func(tx *bolt.Tx) error {
+		bucket:=tx.Bucket([]byte(BUCKET_NAME))
+		if bucket==nil {
+			panic("查询数据失败")
+		}
+		hashkey:=bc.LastHash
+		for {
+			lastBlockBytes:=bucket.Get(hashkey)
+			eachBlock,_:=DeSerialize(lastBlockBytes)
+			if eachBlock.Height<height {
+				break
+			}
+			if eachBlock.Height ==height {
+				block =eachBlock
+			}
+			hashkey =eachBlock.PrevHash
+		}
+		return nil
+	})
+	return block
 }
 /*
 	用于创建一条区块链，并返回该区块链实例

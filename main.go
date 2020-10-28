@@ -108,13 +108,24 @@ func main() {
 	 */
 	bc:=blockchain.NewBlockChain()
 	fmt.Printf("当前区块的hash值：%x\n",bc.LastHash)
+	/*
 	block,err:=bc.SaveData([]byte("这里存储上链的数据信息"))
 	if err!=nil {
 		fmt.Println(err.Error())
 		return
 	}
-	fmt.Printf("区块的高度:%d\n", block.Height)
-	fmt.Printf("区块的PrevHash:%x\n", block.PrevHash)
+
+	 */
+	blocks:=bc.QueryAllBlocks()
+	if len(blocks)==0 {
+		fmt.Println("暂未查询到区块数据")
+		return
+	}
+	for _,block :=range blocks{
+		fmt.Printf("高度:%d,哈希:%x,Prev哈希:%x\n", block.Height, block.Hash, block.PrevHash)
+	}
+	//fmt.Printf("区块的高度:%d\n", block.Height)
+	//fmt.Printf("区块的PrevHash:%x\n", block.PrevHash)
 	return
 	//连接数据库
 	db_mysql.ConDB()
