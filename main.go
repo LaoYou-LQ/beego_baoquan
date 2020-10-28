@@ -4,13 +4,13 @@ import (
 	"DataCertProject/blockchain"
 	"DataCertProject/db_mysql"
 	"fmt"
+
 	//"DataCertProject/models"
 	_ "DataCertProject/routers"
 
 	"github.com/astaxie/beego"
 )
 
-var BUCKET_NAME ="blocks"
 
 func main() {
 	//生成第一个区块
@@ -50,7 +50,7 @@ func main() {
 */
 
 	//生成第一个区块
-
+/*
 	block:=blockchain.CreateGenesisBlock()
 	fmt.Println(block)
 	fmt.Printf("区块的hash值:%x", block.Hash)
@@ -106,7 +106,16 @@ func main() {
 	return
 
 	 */
-
+	bc:=blockchain.NewBlockChain()
+	fmt.Printf("当前区块的hash值：%x\n",bc.LastHash)
+	block,err:=bc.SaveData([]byte("这里存储上链的数据信息"))
+	if err!=nil {
+		fmt.Println(err.Error())
+		return
+	}
+	fmt.Printf("区块的高度:%d\n", block.Height)
+	fmt.Printf("区块的PrevHash:%x\n", block.PrevHash)
+	return
 	//连接数据库
 	db_mysql.ConDB()
 
