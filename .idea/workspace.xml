@@ -2,22 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d80a162-ffd0-4072-acac-980373b52d58" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/static/img/9月7日课程笔记.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/9月8日3班课堂笔记.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/9月9日GoWeb程序设计课程笔记(C190603班).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blockchain/blockChain.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blockchain/pow.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db_mysql/db_my.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/renzhengControllers.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/renzhengControllers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/uploadRecord.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/uploadRecord.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/13928177_195158772185_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/8b13632762d0f703df3a8ac0279fd7392797c58f.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/WeChatImg-8lg-GUI.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/beego_保全项目.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/veer-141674568.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/壁纸2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/壁纸3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/list_record.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/list_record.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain/block.go" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/block.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/db.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,8 +59,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/css" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="D:/新建文件夹/微信文件/WeChat Files/WeChat Files/wxid_dzjjutnu6zsx22/FileStorage/File/2020-10/DataCertProject" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -109,30 +100,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="659" y="244" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1602414517155" />
-    <state x="738" y="98" key="FileChooserDialogImpl" timestamp="1603010970329">
+    <state x="738" y="98" key="FileChooserDialogImpl" timestamp="1603800148244">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="738" y="98" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603010970329" />
-    <state width="1028" height="168" key="GridCell.Tab.0.bottom" timestamp="1603163515038">
+    <state x="738" y="98" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603800148244" />
+    <state width="862" height="100" key="GridCell.Tab.0.bottom" timestamp="1603382349337">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1028" height="168" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603163515038" />
-    <state width="1028" height="168" key="GridCell.Tab.0.center" timestamp="1603163515037">
+    <state width="862" height="100" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603382349337" />
+    <state width="862" height="100" key="GridCell.Tab.0.center" timestamp="1603382349337">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1028" height="168" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603163515037" />
-    <state width="1028" height="168" key="GridCell.Tab.0.left" timestamp="1603163515036">
+    <state width="862" height="100" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603382349337" />
+    <state width="862" height="100" key="GridCell.Tab.0.left" timestamp="1603382349336">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1028" height="168" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603163515036" />
-    <state width="1028" height="168" key="GridCell.Tab.0.right" timestamp="1603163515037">
+    <state width="862" height="100" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603382349336" />
+    <state width="862" height="100" key="GridCell.Tab.0.right" timestamp="1603382349337">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1028" height="168" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603163515037" />
-    <state x="149" y="91" key="SettingsEditor" timestamp="1603012639717">
+    <state width="862" height="100" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603382349337" />
+    <state x="149" y="91" key="SettingsEditor" timestamp="1603205075382">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="149" y="91" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1603012639717" />
+    <state x="149" y="91" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1603205075382" />
     <state x="607" y="126" key="com.goide.refactor.move.GoMoveDeclarationDialog" timestamp="1602998169618">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -141,9 +132,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="627" y="332" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1602987047156" />
-    <state x="248" y="125" width="672" height="678" key="search.everywhere.popup" timestamp="1603120775861">
+    <state x="248" y="125" width="672" height="678" key="search.everywhere.popup" timestamp="1603195838979">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="248" y="125" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603120775861" />
+    <state x="248" y="125" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603195838979" />
   </component>
 </project>

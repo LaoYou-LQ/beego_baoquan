@@ -1,7 +1,7 @@
 package models
 
 import (
-	"DataCertProject/db"
+	"DataCertProject/db_mysql"
 	"DataCertProject/util"
 )
 
@@ -20,7 +20,7 @@ type UploadRecord struct {
 }
 
 func (u UploadRecord) SeveRecord() (int64, error) {
-	r, err := db.Db.Exec("insert into upload_record (file_name,file_size,file_cert,file_title,cert_time,phone)"+
+	r, err := db_mysql.Db.Exec("insert into upload_record (file_name,file_size,file_cert,file_title,cert_time,phone)"+
 		"value(?,?,?,?,?,?)",
 		u.FileName, u.FileSize, u.FileCert, u.FileTitle, u.CertTime, u.Phone)
 	//fmt.Println("111",err)
@@ -38,7 +38,7 @@ func (u UploadRecord) SeveRecord() (int64, error) {
 读取数据库中phone用户对于的所有认证数据
 */
 func QueryRecordbyPhone(phone string) ([]UploadRecord, error) {
-	ros, err := db.Db.Query("select id, file_name ,file_size ,file_cert , file_title ,cert_time, phone from upload_record where phone =?", phone)
+	ros, err := db_mysql.Db.Query("select id, file_name ,file_size ,file_cert , file_title ,cert_time, phone from upload_record where phone =?", phone)
 	if err != nil {
 		return nil, err
 	}

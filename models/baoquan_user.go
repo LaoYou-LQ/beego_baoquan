@@ -1,7 +1,7 @@
 package models
 
 import (
-	"DataCertProject/db"
+	"DataCertProject/db_mysql"
 	"DataCertProject/util"
 	"fmt"
 )
@@ -18,7 +18,7 @@ func (u User) SeveUser() (int64, error) {
 	 //获得结构体user中的用户密码并粉碎
 	util.Md5Hash(u.Password)
 	//执行数据库操作
-	row, err := db.Db.Exec("insert into baoquan(phone,password)"+" values(?,?)", u.Phone, u.Password)
+	row, err := db_mysql.Db.Exec("insert into baoquan(phone,password)"+" values(?,?)", u.Phone, u.Password)
 	if err != nil {
 		return -1, err
 	}
@@ -32,7 +32,7 @@ func (u User) SeveUser() (int64, error) {
 
 func (u User) Querys() (*User ,error) {
 	util.Md5Hash(u.Password)
-	row :=db.Db.QueryRow("select phone from baoquan where phone =? and password=? ", u.Phone, u.Password)
+	row :=db_mysql.Db.QueryRow("select phone from baoquan where phone =? and password=? ", u.Phone, u.Password)
 
 	err:=row.Scan(&u.Phone)
 	if err !=nil {
