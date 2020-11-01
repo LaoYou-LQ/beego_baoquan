@@ -3,7 +3,6 @@ package models
 import (
 	"DataCertProject/db_mysql"
 	"DataCertProject/util"
-	"fmt"
 )
 
 type User struct {
@@ -13,8 +12,7 @@ type User struct {
 }
 
 func (u User) SeveUser() (int64, error) {
-	fmt.Println("执行了")
-	//密码拖密处理
+	//密码拖敏处理
 	 //获得结构体user中的用户密码并粉碎
 	util.Md5Hash(u.Password)
 	//执行数据库操作

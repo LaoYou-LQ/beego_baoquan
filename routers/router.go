@@ -16,8 +16,8 @@ func init() {
     beego.Router("/home",&controllers.RequControllers{})
     //文件上传接口
     beego.Router("/renzheng",&controllers.RenZhengControllers{})
-
+	//在认证数据列表页面，点击新增认证按钮，跳转"新增页面"
     beego.Router("/upload_file.html",&controllers.RenZhengControllers{})
-
-   // beego.Router("/cert_detail.html",&controllers.)
+	//查看认证数据的证书
+	beego.Router("/cert_detail.html", &controllers.CertDetailController{})
 }

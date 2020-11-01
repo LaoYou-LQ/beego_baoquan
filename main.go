@@ -5,7 +5,6 @@ import (
 	"DataCertProject/db_mysql"
 	"fmt"
 
-	//"DataCertProject/models"
 	_ "DataCertProject/routers"
 
 	"github.com/astaxie/beego"
@@ -59,7 +58,7 @@ func main() {
 	//Open在给定的路径上创建并打开一个数据库。
 	////如果该文件不存在，那么它将自动创建。
 	////传入nil选项将导致Bolt用默认选项打开数据库。
-	db,err:=bolt.Open("chain.db",0600,nil)
+	db,err:=bolt.Open(CHAINDB,0600,nil)
 	if err!=nil {
 		panic(err.Error())
 	}
@@ -103,31 +102,13 @@ func main() {
 			return nil
 		}
 	})
-	return
+
 
 	 */
-	bc:=blockchain.NewBlockChain()
-	fmt.Printf("当前区块的hash值：%x\n",bc.LastHash)
-	/*
-	block,err:=bc.SaveData([]byte("这里存储上链的数据信息"))
-	if err!=nil {
-		fmt.Println(err.Error())
-		return
-	}
 
-	 */
-	blocks:=bc.QueryAllBlocks()
-	if len(blocks)==0 {
-		fmt.Println("暂未查询到区块数据")
-		return
-	}
-	for _,block :=range blocks{
-		fmt.Printf("高度:%d,哈希:%x,Prev哈希:%x\n", block.Height, block.Hash, block.PrevHash)
-	}
-	//fmt.Printf("区块的高度:%d\n", block.Height)
-	//fmt.Printf("区块的PrevHash:%x\n", block.PrevHash)
-	return
-	//连接数据库
+	//先准备一条区块链
+	blockchain.NewBlockChain()
+	fmt.Printf("111")
 	db_mysql.ConDB()
 
 	beego.SetStaticPath("/js", ".static/js")

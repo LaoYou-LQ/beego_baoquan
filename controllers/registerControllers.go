@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"DataCertProject/models"
-	"fmt"
 	"github.com/astaxie/beego"
 )
 
@@ -29,7 +28,6 @@ func (r *RegisterControllers) Post() {
 	_,err1 :=user.SeveUser()
 	//3、返回前端结果(成功跳登录页面，失败弹出错误信息）
 	if err1!=nil {
-		fmt.Println(err1)
 		r.Ctx.WriteString("对不起，用户注册失败")
 		return
 	}

@@ -16,6 +16,7 @@ var LAST_KEY = "lasthash"
 //存储区块数据的文件
 var CHAINDB = "chain.db"
 
+var CHAIN BlockChain
 /*
 定义BlockChain结构体的目的
 区块链结构体实例定义：用于表示代表一条区块链
@@ -98,9 +99,40 @@ func (bc BlockChain) QueryBlockByHeight(height int64) *Block {
 
 
 */
+func (bc BlockChain) QueryBlockByCertId(cert_id []byte) (*Block,error) {
+	var block *Block
+	db:=bc.BlotDb
+	var err error
+	db.View(func(tx *bolt.Tx) error {
+		bucket:=tx.Bucket([]byte(BUCKET_NAME))
+		if bucket == nil {
+			errors.New("查询区块数据遇到错误")
+			return err
+		}
+		eachHash:=bucket.Get([]byte(LAST_KEY))
+		eachBig:=new(big.Int)
+		zeroBig:=big.NewInt(0)
+		for {
+			eachBlockBytes:=bucket.Get(eachHash)
+			eachBlock,_:=DeSerialize(eachBlockBytes)
+			if string(eachBlock.Data)==string(cert_id) {
+				block = eachBlock
+				break
+			}
+			eachBig.SetBytes(eachBlock.PrevHash)
+			if eachBig.Cmp(zeroBig)==0 {
+				break
+			}
+			eachHash=eachBlock.PrevHash
+		}
+		return nil
+	})
+	return block,err
+}
+
 func NewBlockChain() BlockChain {
-	//0、打开存储区块数据的chain.db文件
-	db, err := bolt.Open("chain.db", 0600, nil)
+	//0、打开存储区块数据的文件
+	db, err := bolt.Open(CHAINDB, 0600, nil)
 	if err != nil {
 		panic(err.Error())
 	}
@@ -146,6 +178,7 @@ func NewBlockChain() BlockChain {
 		}
 		return nil
 	})
+	CHAIN =bl
 	return bl
 }
 
@@ -156,7 +189,7 @@ func NewBlockChain() BlockChain {
 /*
 	db:=bc.BlotDb
 
-	db,err:=bolt.Open("chain.db",0600,nil)
+	db,err:=bolt.Open(CHAINDB,0600,nil)
 	if err!=nil {
 		panic(err.Error())
 	}
