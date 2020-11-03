@@ -21,6 +21,15 @@ func (z *RenZhengControllers) Get() {
 	z.Data["Phone"] = phone
 	z.TplName = "home.html"
 }
+/*
+ *1、获取客户端上传的文件以及其他form表单的信息
+ *关闭文件
+ *2、将文件保存在本地的一个目录中
+ *3、将上传的记录保存到数据库中
+ *4、从数据库中读取phone用户对应的所有认证数据记录
+ */
+
+
 
 func (z *RenZhengControllers) Post() {
 
@@ -37,20 +46,24 @@ func (z *RenZhengControllers) Post() {
 	}
 	defer f.Close()
 	//路径
+	//2、将文件保存在本地的一个目录中
+	//文件全路径： 路径 + 文件名 + "." + 扩展名
+	//要的文件的路径
 	uploadDir := "./static/img/" + h.Filename
 	saveFile, err := os.OpenFile(uploadDir, os.O_RDWR|os.O_CREATE, 777)
 	defer saveFile.Close()
+	//创建一个writer: 用于向硬盘上写一个文件
 	writer := bufio.NewWriter(saveFile)
-	file_size, err := io.Copy(writer, f)
+	_, err = io.Copy(writer, f)
 	if err != nil {
 		//如果返回错误页面 r.tplName="xxx.html"
 		z.Ctx.WriteString("保存数据出错")
 		return
 	}
-	fmt.Println("拷贝的文件大小是", file_size)
-	//fmt.Println("文件标题是",fileTitle)
+	//打开文件，获取文件内容
 	hashfile, err := os.Open(uploadDir)
 	defer hashfile.Close()
+	//将获取的内容加密
 	hash, err := util.Md5HashReader(hashfile) //保全号加密：10.16上午
 	//将上传的记录保存到数据库中
 	record := models.UploadRecord{}
