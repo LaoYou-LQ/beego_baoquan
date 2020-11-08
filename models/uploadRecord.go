@@ -3,6 +3,7 @@ package models
 import (
 	"DataCertProject/db_mysql"
 	"DataCertProject/util"
+	"fmt"
 )
 
 /*
@@ -23,12 +24,14 @@ func (u UploadRecord) SeveRecord() (int64, error) {
 	r, err := db_mysql.Db.Exec("insert into upload_record (file_name,file_size,file_cert,file_title,cert_time,phone)"+
 		"value(?,?,?,?,?,?)",
 		u.FileName, u.FileSize, u.FileCert, u.FileTitle, u.CertTime, u.Phone)
-	//fmt.Println("111",err)
+	fmt.Println("111",err)
 	if err != nil {
+		fmt.Println("222",err)
 		return -1, err
 	}
 	id, err := r.RowsAffected()
 	if err != nil {
+		fmt.Println("333",err)
 		return -1, err
 	}
 	return id, nil

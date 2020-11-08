@@ -65,12 +65,13 @@ func (z *RenZhengControllers) Post() {
 	defer hashfile.Close()
 	//将获取的内容加密
 	hash, err := util.Md5HashReader(hashfile) //保全号加密：10.16上午
+	t :=time.Now().Unix()
 	//将上传的记录保存到数据库中
 	record := models.UploadRecord{}
 	record.FileName = h.Filename
 	record.FileSize = h.Size
 	record.FileTitle = fileTitle
-	record.CertTime = time.Now().Unix()
+	record.CertTime = t
 	record.FileCert = hash
 	record.Phone = phone
 	//fmt.Println(record.FileCert)
@@ -81,7 +82,28 @@ func (z *RenZhengControllers) Post() {
 		z.Ctx.WriteString("数据认证错误")
 		return
 	}
-	_, err = blockchain.CHAIN.SaveData([]byte(hash))
+	//1.准备用户相关信息
+	us,err:=models.QueryUserByPhone(phone)
+	if err!=nil {
+		z.Ctx.WriteString("数据认证失败")
+		return
+	}
+	//2准备认证文件的SHA256哈希
+	certhash,_:=util.SHA256HashReader(hashfile)
+	//3实例化一个认证数据结构体实例
+	certRecord:=models.CertRecord{
+		CertId:[]byte(hash),
+		CertHash:[]byte(certhash),
+		CertAuthor:us.Name,
+		AuthorCard:us.Card,
+		Phone:us.Phone,
+		FileName:h.Filename,
+		FileSize:h.Size,
+		CertTime:t,
+	}
+	//4序列化
+	certBytes,err:=certRecord.SerializeRecord()
+	_, err = blockchain.CHAIN.SaveData(certBytes)
 	if err != nil {
 		z.Ctx.WriteString("认证数据上链失败")
 		return

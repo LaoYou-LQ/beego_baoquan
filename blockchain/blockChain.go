@@ -1,6 +1,7 @@
 package blockchain
 
 import (
+	"DataCertProject/models"
 	"errors"
 	"fmt"
 	"github.com/boltdb/bolt-master"
@@ -112,10 +113,13 @@ func (bc BlockChain) QueryBlockByCertId(cert_id []byte) (*Block,error) {
 		eachHash:=bucket.Get([]byte(LAST_KEY))
 		eachBig:=new(big.Int)
 		zeroBig:=big.NewInt(0)
+		var certRecord *models.CertRecord
 		for {
 			eachBlockBytes:=bucket.Get(eachHash)
 			eachBlock,_:=DeSerialize(eachBlockBytes)
-			if string(eachBlock.Data)==string(cert_id) {
+			//序列化以后的结构体数据是certRecord 类型eachBlock。data
+			certRecord,_=models.DeSerializeRecord(eachBlock.Data)
+			if string(certRecord.CertId)==string(cert_id) {
 				block = eachBlock
 				break
 			}
